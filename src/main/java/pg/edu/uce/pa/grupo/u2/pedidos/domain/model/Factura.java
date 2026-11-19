@@ -2,13 +2,38 @@ package pg.edu.uce.pa.grupo.u2.pedidos.domain.model;
 
 import java.time.LocalDate;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.SequenceGenerator;
+import jakarta.persistence.Table;
+
+@Entity 
+@Table (name = "facturas")
 public class Factura {
 
+    @Id 
+    @SequenceGenerator (name = "factura_seq", sequenceName = "fac_seq", allocationSize = 1 )
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "factura_seq") 
+    @Column (name="fac_id")
     private int id;
+
+      @Column (name="fac_numFactura")
     private String numFactura;
+
+      @Column (name="fac_fecha")
     private LocalDate fechaEmision;
+
+      @Column (name="fac_subtotal")
     private double subtotal;
+
+      @Column (name="fac_total")
     private double total;
+
+
+    
     public int getId() {
         return id;
     }

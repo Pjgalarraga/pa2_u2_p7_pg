@@ -3,13 +3,37 @@ package pg.edu.uce.pa.grupo.u2.pedidos.domain.model;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.SequenceGenerator;
+import jakarta.persistence.Table;
+
+@Entity 
+@Table (name = "pagos")
 public class Pago {
 
+     @Id 
+    @SequenceGenerator (name = "pagos_seq", sequenceName = "pag_seq", allocationSize = 1 )
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "pagos_seq") 
+    @Column (name="pag_id")
     private int id;
+
+     @Column (name="pag_metodoPago")
     private String metodoPago;
+
+     @Column (name="pag_monto")
     private double monto;
+
+     @Column (name="pag_fecha")
     private LocalDateTime fechaPago;
+
+     @Column (name="pag_estado")
     private String estado;
+
+    
     public int getId() {
         return id;
     }
