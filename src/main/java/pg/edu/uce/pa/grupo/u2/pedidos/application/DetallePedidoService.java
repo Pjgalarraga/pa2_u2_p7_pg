@@ -1,5 +1,7 @@
 package pg.edu.uce.pa.grupo.u2.pedidos.application;
 
+import java.util.Optional;
+
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
 import jakarta.transaction.Transactional;
@@ -17,8 +19,13 @@ public class DetallePedidoService {
         this.detallePedidoRepository.create(detallePedido);
     }
 
-    public DetallePedido buscarPorId(Integer id){
+    public Optional<DetallePedido> buscarPorId(Integer id){
         return this.detallePedidoRepository.read(id);
+
+    }
+
+    public Optional<DetallePedido> buscarPorNumero(String numero){
+        return this.detallePedidoRepository.readByNumber(numero);
 
     }
 

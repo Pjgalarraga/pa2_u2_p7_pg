@@ -1,5 +1,7 @@
 package pg.edu.uce.pa.grupo.u2.pedidos.application;
 
+import java.util.Optional;
+
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
 import jakarta.transaction.Transactional;
@@ -17,9 +19,15 @@ public class PagoService {
         this.pagoRepository.create(pago);
     }
 
-    public Pago buscarPorId(Integer id){
+    public Optional<Pago> buscarPorId(Integer id){
         return this.pagoRepository.read(id);
     }
+
+     public Optional<Pago> buscarPorNumero(String numero){
+        return this.pagoRepository.readByNumber(numero);
+    }
+    
+
 
     public void actualizar(Pago pago){
         this.pagoRepository.update(pago);

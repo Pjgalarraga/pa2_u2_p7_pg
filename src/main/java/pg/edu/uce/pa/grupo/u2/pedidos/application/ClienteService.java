@@ -1,5 +1,7 @@
 package pg.edu.uce.pa.grupo.u2.pedidos.application;
 
+import java.util.Optional;
+
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
 import jakarta.transaction.Transactional;
@@ -19,10 +21,14 @@ public class ClienteService {
         
     }
 
-    public Cliente buscarPorId(Integer id){
+    public Optional<Cliente> buscarPorId(Integer id){
 
         return this.clienteRepository.read(id);
 
+    }
+
+    public  Optional <Cliente> buscarPorNumero(String numero){
+        return this.clienteRepository.readByNumber(numero);
     }
 
     public void actualizar(Cliente cliente){

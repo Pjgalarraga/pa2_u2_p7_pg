@@ -32,8 +32,19 @@ public class Factura {
       @Column (name="fac_total")
     private double total;
 
+      @Column(name="fac_numero")
+    private String numero;
 
     
+
+
+
+    
+    @Override
+    public String toString() {
+        return "Factura [id=" + id + ", numFactura=" + numFactura + ", fechaEmision=" + fechaEmision + ", subtotal="
+                + subtotal + ", total=" + total + ", numero=" + numero + "]";
+    }
     public int getId() {
         return id;
     }
@@ -63,6 +74,12 @@ public class Factura {
     }
     public void setTotal(double total) {
         this.total = total;
+    }
+    public String getNumero() {
+        return numero;
+    }
+    public void setNumero(String numero) {
+        this.numero = numero;
     } 
 
 

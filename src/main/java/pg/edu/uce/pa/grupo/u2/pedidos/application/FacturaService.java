@@ -1,5 +1,7 @@
 package pg.edu.uce.pa.grupo.u2.pedidos.application;
 
+import java.util.Optional;
+
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
 import jakarta.transaction.Transactional;
@@ -19,9 +21,16 @@ public class FacturaService {
         
     }
 
-    public Factura buscarPorId(Integer id){
+    public Optional<Factura> buscarPorId(Integer id){
 
         return this.facturaRepository.read(id);
+
+    }
+
+    
+    public Optional<Factura> buscarPorNumero(String numero){
+
+        return this.facturaRepository.readByNumber(numero);
 
     }
 

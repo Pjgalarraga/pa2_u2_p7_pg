@@ -30,7 +30,17 @@ public class DetallePedido {
      @Column(name = "dePe_idProducto")
     private int idProducto;
 
+      @Column(name="dePe_numero")
+    private String numero;
+
     
+
+    
+    @Override
+    public String toString() {
+        return "DetallePedido [id=" + id + ", cantidad=" + cantidad + ", precioUnitario=" + precioUnitario
+                + ", subtotal=" + subtotal + ", idProducto=" + idProducto + ", numero=" + numero + "]";
+    }
     public int getId() {
         return id;
     }
@@ -60,6 +70,12 @@ public class DetallePedido {
     }
     public void setIdProducto(int idProducto) {
         this.idProducto = idProducto;
+    }
+    public String getNumero() {
+        return numero;
+    }
+    public void setNumero(String numero) {
+        this.numero = numero;
     }
 
     

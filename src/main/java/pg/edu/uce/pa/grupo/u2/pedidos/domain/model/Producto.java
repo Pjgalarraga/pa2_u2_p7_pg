@@ -31,6 +31,17 @@ public class Producto {
     
     @Column(name="prod_stock")
     private int stock;
+
+      @Column(name="prod_numero")
+    private String numero;
+
+
+
+    @Override
+    public String toString() {
+        return "Producto [id=" + id + ", nombre=" + nombre + ", descripcion=" + descripcion + ", precio=" + precio
+                + ", stock=" + stock + ", numero=" + numero + "]";
+    }
     public int getId() {
         return id;
     }
@@ -60,6 +71,12 @@ public class Producto {
     }
     public void setStock(int stock) {
         this.stock = stock;
+    }
+    public String getNumero() {
+        return numero;
+    }
+    public void setNumero(String numero) {
+        this.numero = numero;
     }
 
 

@@ -32,7 +32,18 @@ public class Cliente {
     @Column(name = "clie_direccion")
     private String direccion;
 
+      @Column(name="clie_numero")
+    private String numero;
+
     
+
+
+    
+    @Override
+    public String toString() {
+        return "Cliente [id=" + id + ", nombre=" + nombre + ", correo=" + correo + ", telefono=" + telefono
+                + ", direccion=" + direccion + ", numero=" + numero + "]";
+    }
     public int getId() {
         return id;
     }
@@ -62,6 +73,12 @@ public class Cliente {
     }
     public void setDireccion(String direccion) {
         this.direccion = direccion;
+    }
+    public String getNumero() {
+        return numero;
+    }
+    public void setNumero(String numero) {
+        this.numero = numero;
     }
 
     

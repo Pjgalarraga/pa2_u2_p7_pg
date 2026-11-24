@@ -1,8 +1,12 @@
 package pg.edu.uce.pa.grupo.u2.pedidos.infraestructure.persistence.repository;
 
+import java.util.List;
+import java.util.Optional;
+
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
 import jakarta.persistence.EntityManager;
+import jakarta.persistence.TypedQuery;
 import pg.edu.uce.pa.grupo.u2.pedidos.domain.model.Cliente;
 import pg.edu.uce.pa.grupo.u2.pedidos.domain.model.DetallePedido;
 import pg.edu.uce.pa.grupo.u2.pedidos.domain.repository.ClienteRepository;
@@ -21,8 +25,10 @@ public class DetallePedidoRepositoryImpl implements DetallePedidoRepository{
       }
 
     @Override
-    public DetallePedido read(Integer id) {
-        return this.entityManager.find(DetallePedido.class, id);
+    public Optional <DetallePedido> read(Integer id) {
+        DetallePedido detallePedido = this.entityManager.find(DetallePedido.class, id);
+
+        return Optional.ofNullable(detallePedido);
      }
 
     @Override
@@ -32,8 +38,25 @@ public class DetallePedidoRepositoryImpl implements DetallePedidoRepository{
 
     @Override
     public void delete(Integer id) {
-        this.entityManager.remove(this.read(id));
+        Optional<DetallePedido> detallePedido = this.read(id);
+        detallePedido.ifPresent(this.entityManager::remove);
         }
+
+    @Override
+    public Optional<DetallePedido> readByNumber(String numero) {
+    
+        TypedQuery <DetallePedido> query = this.entityManager.createQuery("SELECT d FROM detallePedido d WHERE d.numero = :numeroVariable", DetallePedido.class);
+
+        query.setParameter("numeroVariable", numero);
+
+        return Optional.ofNullable(query.getSingleResult());
+    }
+    
+
+    @Override
+    public List<DetallePedido> readAll() {
+   return null;
+}
 
         
 

@@ -33,7 +33,18 @@ public class Pago {
      @Column (name="pag_estado")
     private String estado;
 
+      @Column(name="pag_numero")
+    private String numero;
+
     
+
+
+    
+    @Override
+    public String toString() {
+        return "Pago [id=" + id + ", metodoPago=" + metodoPago + ", monto=" + monto + ", fechaPago=" + fechaPago
+                + ", estado=" + estado + ", numero=" + numero + "]";
+    }
     public int getId() {
         return id;
     }
@@ -63,6 +74,12 @@ public class Pago {
     }
     public void setEstado(String estado) {
         this.estado = estado;
+    }
+    public String getNumero() {
+        return numero;
+    }
+    public void setNumero(String numero) {
+        this.numero = numero;
     }
     
 
