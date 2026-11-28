@@ -1,5 +1,6 @@
 package pg.edu.uce.pa.grupo.u2.pedidos.application;
 
+import java.util.List;
 import java.util.Optional;
 
 import jakarta.enterprise.context.ApplicationScoped;
@@ -27,6 +28,18 @@ public class PedidoService {
       public Optional<Pedido> buscarPorNumero(String numero){
         
         return this.pedidoRepository.readByNumber(numero);
+    }
+
+    public  List<Pedido> buscarTodo(){
+        return this.pedidoRepository.readAll();
+    }
+
+    public Optional<Pedido> buscarPorNumeroNative(String numero){
+        return this.pedidoRepository.readByNumberNative(numero);
+    }
+
+     public  List<Pedido> buscarTodoNative(){
+        return this.pedidoRepository.readAllNative();
     }
 
     

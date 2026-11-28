@@ -2,6 +2,7 @@ package pg.edu.uce.pa.grupo.u2;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.Optional;
 
 import io.quarkus.runtime.QuarkusApplication;
@@ -39,13 +40,13 @@ if(pedido1.isPresent()){
 
 //Insertar 
         Pedido pedido2= new Pedido();
-        pedido2.setNumero("PED-001");
-        this.pedidoService.guardar(pedido2);
-        System.out.println("Pedido insertado:" + pedido2);
+        pedido2.setNumero("PED-003");
+      //  this.pedidoService.guardar(pedido2);
+       // System.out.println("Pedido insertado:" + pedido2);
 
 
 //READ BY NUMBER
-
+ /* 
 Optional<Pedido> pedidoByNumber= this.pedidoService.buscarPorNumero("PED-001");
 if(pedidoByNumber.isPresent()){
    System.out.println("Pedido encontrado por número:" + pedidoByNumber.get());
@@ -53,6 +54,40 @@ if(pedidoByNumber.isPresent()){
 }else{
     
    System.out.println("Pedido no encontrado por número");
+}*/
+
+//READ BY NUMBER Native
+ 
+Optional<Pedido> pedidoByNumber= this.pedidoService.buscarPorNumeroNative("PED-003");
+if(pedidoByNumber.isPresent()){
+   System.out.println("Pedido encontrado por número (Native):" + pedidoByNumber.get());
+  
+}else{
+    
+   System.out.println("Pedido no encontrado por número (native)");
+}
+
+/* 
+//Read All
+List<Pedido> listaPedidos = this.pedidoService.buscarTodo();
+
+for(Pedido pedidos:listaPedidos){
+   System.out.println("Pedido encontrado: ");
+
+   System.out.println(pedidos);
+
+}*/
+
+
+
+//Read All
+List<Pedido> listaPedidos = this.pedidoService.buscarTodoNative();
+
+for(Pedido pedidos:listaPedidos){
+   System.out.println("Pedido encontrado(native): ");
+
+   System.out.println(pedidos);
+
 }
 
          
